@@ -9,6 +9,7 @@ function App() {
     email: '',
     password: ''
   });
+  //hello1
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,6 +20,7 @@ function App() {
     e.preventDefault();
 
     try {
+    
       const response = await fetch('http://localhost:8000/register', {
         method: 'POST',
         headers: {
