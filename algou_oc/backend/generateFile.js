@@ -13,7 +13,7 @@ const generateFile = async (language, code)=> {
     const jobId = uuid();
     const filename = `${jobId}.${language}`;
     const filePath = path.join(dirCodes, filename);
-    fs.writeFileSync(filePath, code);
+    await fs.writeFileSync(filePath, code);
     return filePath;
 
 };

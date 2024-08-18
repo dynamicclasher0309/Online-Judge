@@ -9,13 +9,13 @@ if (!fs.existsSync (outputPath)){
     
 }
 
-const executeCpp = async (filePath)=> {
+const executeCpp = async (filePath, inputPath)=> {
     const jobId = path.basename(filePath).split(".")[0]; // it will create an array and [0] will give the first element of the array which is the name of the file 
     const output_filename = `${jobId}.out`;
     const outPath = path.join(outputPath, output_filename);
     // return outPath;
     return new Promise((resolve, reject) => {
-        exec(`g++ ${filePath} -o ${outPath} && cd ${outputPath} && ./${output_filename}`, (error, stdout, stderr) => {
+        exec(`g++ ${filePath} -o ${outPath} && cd ${outputPath} && ./${output_filename} <${inputPath}`, (error, stdout, stderr) => {
             if (error)
             {
                 reject({error, stderr});
